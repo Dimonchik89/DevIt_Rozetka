@@ -1,0 +1,94 @@
+@import "./vars.scss";
+
+.focus__btn {
+    display: inline-block;
+    border-radius: 7px;
+
+    transition: all .2s linear;
+    &:hover {
+        background: #4a4d50 !important;
+
+    }
+}
+
+.decoration-none {
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-end {
+    justify-content: end;
+}
+
+.d-column {
+    flex-direction: column;
+}
+
+.border {
+    border: 1px solid $gray;
+    border-radius: 3px;
+}
+
+.border-top {
+    border-top: 1px solid $gray;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $gray;
+}
+
+.pl-0{
+    padding-left: 0;
+}
+
+.p-10 {
+    padding: 1rem;
+}
+
+.pl-16 {
+    padding-left: 1.6rem;
+}
+
+.p-16 {
+    padding: 1.6rem 1.6rem;
+}
+
+.pt-30 {
+    padding-top: 3rem;
+}
+
+.pb-30 {
+    padding-bottom: 3rem;
+}
+
+.mt-15{
+    margin-top: 1.5rem;
+}
+
+.mt-30 {
+    margin-top: 3rem;
+}
+
+.mb-30 {
+    margin-bottom: 3rem;
+}
+
+.mt-50 {
+    margin-top: 5rem;
+}
+
+.icon {
+    color: $white;
+    font-size: 3rem !important;
+}

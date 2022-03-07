@@ -1,0 +1,11 @@
+.info-list {
+    padding: 1rem 1.6rem;
+
+    .info-list__link {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

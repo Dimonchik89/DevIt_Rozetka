@@ -1,0 +1,10 @@
+@import "../../style/vars.scss";
+
+.goods {
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+
+    border-left: 1px solid $gray;
+}

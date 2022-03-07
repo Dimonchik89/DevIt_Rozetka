@@ -1,0 +1,43 @@
+{
+  "name": "devit_rozetka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "concurrently \"webpack serve --mode=development --open\" \" npx json-server data.json --port 3001",
+    "build": "webpack --mode=production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.4.4",
+    "@mui/material": "^5.4.4",
+    "@reduxjs/toolkit": "^1.8.0",
+    "axios": "^0.26.0",
+    "concurrently": "^7.0.0",
+    "nanoid": "^3.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "redux": "^4.1.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
