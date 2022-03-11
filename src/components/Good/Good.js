@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addGoodToCart } from "../Cart/cartSlice";
+import React, { memo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addGoodToCart } from "../../store/action/cart";
 import { Link } from "react-router-dom";
-import useChange from "../../hook/useChange";
-
+import { addToCart } from "../../helper/helper";
+import {handleChangeBoolean} from "../../hook/useChange";
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -12,25 +12,21 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
-
 import "./good.scss";
-import "../../style/helper.scss"
+import "../../style/helper.scss";
 
-const Good = (props) => {
-
-    const [favorit, setFavorit] = useState(false);
-    const {changeBooleanState} = useChange();
+const Good = memo((props) => {
     const {id, model, img, rating, cost} = props;
     const dispatch = useDispatch();
-
-    const favoritIcon = favorit ? <FavoriteIcon sx={{ color: "orange" }} /> : <FavoriteBorderIcon sx={{ color: "orange" }} />;
-
+    const {cart} = useSelector(state => state.cart);
+    const favorit = handleChangeBoolean(false)
+    const favoritIcon = favorit.value ? <FavoriteIcon sx={{ color: "orange" }} /> : <FavoriteBorderIcon sx={{ color: "orange" }} />;
     return (
         <div className="good flex d-column">
-            <div className="good-header flex space-between align-center">
+            <div className="flex space-between align-center">
                 <span className="good__stock">Акция</span>
                 <IconButton
-                    onClick={() => changeBooleanState(setFavorit)}
+                    onClick={favorit.change}
                 >
                     {favoritIcon}
                 </IconButton>
@@ -48,28 +44,24 @@ const Good = (props) => {
                         </Typography>
                     </Link>
                 </CardContent>
-
                 <div className="">
                     <Rating
                     name="read-only"
                     value={rating}
                     readOnly/>
                 </div>
-
                 <div className="flex space-between">
                     <CardContent sx={{paddingLeft: 0}}>
                         <Typography variant="h4" sx={{color: "red"}} align="left">
                             {`${cost}₴`}
                         </Typography>
                     </CardContent>
-
                     <IconButton disableRipple onClick={() => {
-                        dispatch(addGoodToCart(props))
+                        dispatch(addGoodToCart(addToCart(cart, props)))
                     }}>
                         <ShoppingCartIcon color="success" fontSize="large"/>
                     </IconButton>
                 </div>
-
                 <div className="flex">
                     <Typography variant="body1" sx={{color: "#2e7d32", mr: ".5rem"}}>
                         готово к отправке
@@ -79,6 +71,5 @@ const Good = (props) => {
             </div>
         </div>
     )
-}
-
+})
 export default Good;

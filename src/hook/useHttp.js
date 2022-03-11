@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const useHttp = () => {
-
     const getGoods = async (url) => {
         try {
             const response = await axios.get(url);
@@ -10,8 +9,6 @@ const useHttp = () => {
             throw new Error(e)
         }
     }
-
     return { getGoods }
 }
-
 export default useHttp;

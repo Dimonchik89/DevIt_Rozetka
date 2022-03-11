@@ -1,0 +1,1 @@
+export const addGoodToCart = (good) => ({type: "ADD_GOOD_TO_CART", payload: good})

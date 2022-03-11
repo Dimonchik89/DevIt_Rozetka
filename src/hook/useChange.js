@@ -1,10 +1,9 @@
-const useChange = () => {
+import { useState } from "react";
 
-    const changeBooleanState = (setChange) => {
-        setChange(state => !state)
+export const handleChangeBoolean = (initial) => {
+    const [value, setValue] = useState(initial)
+    const change = () => {
+        setValue(value => !value)
     }
-
-    return {changeBooleanState}
+    return {value, change}
 }
-
-export default useChange;

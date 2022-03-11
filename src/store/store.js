@@ -1,13 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import {reducer as allGoods} from "../components/Goods/goodsSlice";
-import {reducer as find} from "../components/Header/headerSlice";
-import {reducer as cart} from "../components/Cart/cartSlice";
-import {reducer as filter} from "../components/Filter/filterSlice";
+import { createStore, combineReducers } from "redux";
+import {goodsReducer as allGoods} from "./reducer/goodsReduer";
+import {filterReducer as filter} from "./reducer/filterReducer";
+import {cartReducer as cart} from "./reducer/cartReducer";
+import {headerReducer as find} from "./reducer/headerReducer";
+import {slideMenuReducer as slideMenu} from "./reducer/slideMenuReducer";
 
-const store = configureStore({
-    reducer: {allGoods, find, cart, filter},
-    middleware: getDefaultMiddleware => getDefaultMiddleware(),
-    devTools: process.env.NODE_ENV != "production"
-})
+const store = createStore(combineReducers({allGoods, filter, cart, find, slideMenu}),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 export default store;

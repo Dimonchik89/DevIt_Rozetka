@@ -1,14 +1,12 @@
-const useFind = () => {
+import { useState } from "react";
 
-    const setFind = (text, handleChange) => {
-        handleChange(inputFind => inputFind = text)
+export const useFind = (init) => {
+    const [findText, setFindText] = useState(init);
+    const setChangeFindText = event => {
+        setFindText(event.target.value)
     }
-
-    const resetInputFind = (handleChange) => {
-        handleChange(inputFind => inputFind = "");
+    const resetFindText = () => {
+        setFindText("")
     }
-
-    return { setFind, resetInputFind }
+    return {findText, setChangeFindText, resetFindText}
 }
-
-export default useFind;

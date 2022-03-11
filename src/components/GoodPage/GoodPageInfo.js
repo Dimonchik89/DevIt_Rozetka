@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Grid } from "@mui/material";
 
 const GoodPageInfo = () => {
-
     return (
         <Container>
             <Grid container>
@@ -12,5 +11,4 @@ const GoodPageInfo = () => {
         </Container>
     )
 }
-
 export default GoodPageInfo;

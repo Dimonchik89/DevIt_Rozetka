@@ -1,15 +1,5 @@
 @import "../../style/vars.scss";
 
-.slide-menu {
-
-
-    .slide__avatar {
-        width: 3.2rem;
-        height: 3.2rem;
-    }
-
-}
-
 .slide-header {
     padding: 1rem 1.6rem;
     width: 300px;
@@ -27,4 +17,7 @@
     }
 }
 
-
+.slide__avatar {
+    width: 3.2rem;
+    height: 3.2rem;
+}

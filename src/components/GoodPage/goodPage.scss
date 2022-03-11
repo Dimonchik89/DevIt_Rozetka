@@ -2,16 +2,19 @@
 
 .good-page {
     margin-top: 1.5rem;
+
+    .good-page__link-list {
+        margin: 2.5rem 0;
+        padding: 1rem 0;
+        background: $light-blue;
+
+        .good-page__link {
+            font-size: 1.8rem;
+            text-decoration: none;
+            margin-right: 1.5rem;
+        }
+    }
 }
 
-.good-page__link-list {
-    margin: 2.5rem 0;
-    padding: 1rem 0;
-    background: $light-blue;
-}
 
-.good-page__link {
-    font-size: 1.8rem;
-    text-decoration: none;
-    margin-right: 1.5rem;
-}
+

@@ -1,27 +1,28 @@
+import { useState } from "react";
+import { handleIncludes } from "../helper/helper";
+
 const useSort = () => {
-
-    const sortName = (find, allGoods, setGoods) => {
+    const [sortGoodsArr, setSortGoodsArr] = useState([])
+    const sortName = (find, allGoods) => {
         if(find) {
-            return setGoods(goods => goods.filter(item => item.model.toLowerCase().replace(/\_/g, " ").includes(find.toLowerCase())))
+            return setSortGoodsArr(sortGoodsArr => sortGoodsArr.filter(item => handleIncludes(item, find)))
         }
-        return setGoods(goods => goods = [...allGoods]);
+        return setSortGoodsArr([...allGoods]);
     }
-
-    const contains = (where, what, setGoods) => {
-        if(what.length != 0) {
+    const contains = (where, what) => {
+        if(what.length !== 0) {
             let newArr = [];
             for(let i = 0; i < where.length; i++) {
                 for(let q = 0; q < what.length; q++) {
                     if(Object.values(where[i]).includes(what[q])) {
                         newArr.push(where[i])
+                        break
                     }
                 }
             }
-            return setGoods(goods => newArr)
+            return setSortGoodsArr(newArr)
         }
     }
-
-    return {sortName, contains}
+    return {sortName, contains, sortGoodsArr}
 }
-
 export default useSort;

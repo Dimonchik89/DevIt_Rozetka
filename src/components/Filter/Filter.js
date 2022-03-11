@@ -1,23 +1,23 @@
 import React, {useEffect, useCallback} from "react";
 import { useDispatch } from "react-redux";
-import { fetchFilter, addActiveFilter, removeOneFilter } from "./filterSlice";
-
 import CircularProgress from '@mui/material/CircularProgress';
 import FormGroup from '@mui/material/FormGroup';
-
 import FilterItem from "./FilterItem";
 import FilterContainer from "./FilterContainer";
-
+import useHttp from "../../hook/useHttp";
+import { addActiveFilter, removeOneFilter, filterFetching, filterFetched, filterFetchingError } from "../../store/action/filter";
 import "./filter.scss";
 
 const Filter = () => {
-
     const dispatch = useDispatch();
-
+    const {getGoods} = useHttp()
     useEffect(() => {
-        dispatch(fetchFilter())
-    }, [])
+        dispatch(filterFetching())
+        getGoods("http://localhost:3001/notebook-filter")
+            .then(filters => dispatch(filterFetched(filters)))
+            .catch(dispatch(filterFetchingError()))
 
+    }, [])
     const renderContent = useCallback((data) => {
         if(data.length > 0) {
             return data.map(item => {
@@ -32,12 +32,10 @@ const Filter = () => {
             return <CircularProgress/>
         }
     }, [])
-
     return (
         <>
             <FilterContainer renderContent={renderContent}/>
         </>
     )
 }
-
 export default Filter;

@@ -4,35 +4,39 @@
     display: block;
     width: 25%;
     padding: 1.5rem .5rem;
-
     border-right: 1px solid $gray;
     border-bottom: 1px solid $gray;
     text-decoration: none;
+
+    .good__stock {
+        padding: .3rem .7rem;
+        background: red;
+        border-radius: 12px;
+        color: $white;
+        font-weight: 500;
+    }
+
+    .good-content {
+        margin-bottom: 2.5rem;
+
+        .good__img {
+            object-fit: contain;
+            max-height: 130px;
+            margin: 0 auto;
+        }
+    }
+
+    .good__title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+    }
 }
 
-.good__stock {
-    padding: .3rem .7rem;
-    background: red;
-    border-radius: 12px;
 
-    color: $white;
-    font-weight: 500;
-}
 
-.good-content {
-    margin-bottom: 2.5rem;
-}
 
-.good__img {
-    object-fit: contain;
-    max-height: 130px;
-    margin: 0 auto;
-}
 
-.good__title {
-    text-overflow: ellipsis; /*показывает точки при скрытии контента вылезающего за пределы блока*/
-    overflow: hidden; /* обрезаем все что выходит за пределы блока*/
-    white-space: nowrap; /*запрещаем перенос текста на новую строку */
 
-    text-align: center;
-}
+

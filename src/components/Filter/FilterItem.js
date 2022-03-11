@@ -1,13 +1,10 @@
-import React, {useState} from "react";
+import React, {memo} from "react";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const FilterItem = ({item, addActiveFilter, removeOneFilter}) => {
-
+const FilterItem = memo(({item, addActiveFilter, removeOneFilter}) => {
     const dispatch = useDispatch();
-    const {activeFilter} = useSelector(state => state.filter);
-
     return (
         <>
             <FormControlLabel
@@ -23,14 +20,6 @@ const FilterItem = ({item, addActiveFilter, removeOneFilter}) => {
                         }}
                         color="success"/>} label={item}/>
         </>
-
     )
-}
-
+})
 export default FilterItem;
-
-// [
-//     {brand: ["aser", "asus"]}
-//     {ram: ["4", "8"]}
-//     {processor: ["i3", "i5"]}
-// ]

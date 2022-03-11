@@ -1,11 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useFind from "../../hook/useFind";
-import { changeFind, resetFind } from "./headerSlice";
+import {useFind} from "../../hook/useFind";
 import { Link } from "react-router-dom";
-import useChange from "../../hook/useChange";
-
-
+import { changeFind, resetFind } from "../../store/action/header";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
@@ -15,19 +12,14 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
-
-
+import { showMenu } from "../../store/action/slideMenu";
 import "./header.scss";
 import "../../style/helper.scss";
 
-const Header = ({setSlideMenu}) => {
-
-    const [inputFind, setInputFind] = useState("")
-    const { setFind, resetInputFind } = useFind();
+const Header = () => {
+    const inputText = useFind("");
     const dispatch = useDispatch();
     const {cart} = useSelector(state => state.cart);
-    const {changeBooleanState} = useChange();
-
     return (
         <div className="header">
             <Container maxWidth="lg">
@@ -38,7 +30,7 @@ const Header = ({setSlideMenu}) => {
                             <IconButton
                                 size="large"
                                 aria-label="user"
-                                onClick={() => changeBooleanState(setSlideMenu)}>
+                                onClick={() => dispatch(showMenu())}>
                                 <MenuIcon className="icon"/>
                             </IconButton>
                         </div>
@@ -57,30 +49,27 @@ const Header = ({setSlideMenu}) => {
                             <input
                                 className="header__input"
                                 type="text"
-                                value={inputFind}
-                                onChange={(e) => {
-                                    setFind(e.target.value, setInputFind)
-                                }} />
+                                value={inputText.findText}
+                                onChange={inputText.setChangeFindText}
+                                />
                                 {
-                                    inputFind.length === 0 ? null : <IconButton disableRipple="false" sx={{mr: "1rem"}} onClick={() => {
-                                                                            resetInputFind(setInputFind)
+                                    inputText.findText.length === 0 ? null : <IconButton disableRipple="false" sx={{mr: "1rem"}} onClick={() => {
+                                                                            inputText.resetFindText()
                                                                             dispatch(resetFind())
                                                                         }}>
                                                                         <CloseIcon/>
                                                                     </IconButton>
                                 }
-
                             <Button
                                 className="header__button"
                                 color="success"
                                 variant="contained"
                                 onClick={() => {
-                                    dispatch(changeFind(inputFind))
+                                    dispatch(changeFind(inputText.findText))
                                 }}>
                                 Найти
                             </Button>
                         </div>
-
                     </Grid>
                     <Grid item md={2} className="flex justify-end">
                         <div className="focus__btn">
@@ -90,7 +79,6 @@ const Header = ({setSlideMenu}) => {
                                 <PersonOutlineIcon  className="icon"/>
                             </IconButton>
                         </div>
-
                         <div className="focus__btn">
                             <IconButton
                                 size="large"
@@ -104,13 +92,10 @@ const Header = ({setSlideMenu}) => {
                                 </Badge>
                             </IconButton>
                         </div>
-
                     </Grid>
                 </Grid>
             </Container>
         </div>
-
     )
 }
-
 export default Header;

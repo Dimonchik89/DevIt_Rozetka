@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BorderAllIcon from '@mui/icons-material/BorderAll';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -32,7 +31,6 @@ export const slideMenuArr = [
         icon: <LocalPhoneIcon fontSize="large"/>
     }
 ]
-
 export const slideMenuAbout = [
     {
         link: "",
@@ -51,7 +49,6 @@ export const slideMenuAbout = [
         text: "Контакты",
     },
 ]
-
 export const slideMenuHelp = [
     {
         link: "",
@@ -74,7 +71,6 @@ export const slideMenuHelp = [
         text: "Сервисные центры",
     },
 ]
-
 export const slideMenuServices = [
     {
         link: "",
@@ -97,7 +93,6 @@ export const slideMenuServices = [
         text: "Туры и отдых",
     },
 ]
-
 export const slideMenuPartners = [
     {
         link: "",
@@ -116,7 +111,6 @@ export const slideMenuPartners = [
         text: "Аренда помещений",
     },
 ]
-
 export const slideMenuSocial = [
     {
         link: "",

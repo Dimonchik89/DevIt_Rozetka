@@ -1,12 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import GppGoodIcon from '@mui/icons-material/GppGood';
+import "../../style/vars.scss";
 
-
-import "../../style/vars.scss"
-
-const GoodPageAll = ({selectGood}) => {
-
+const GoodPageAll = memo(({selectGood}) => {
     return (
         <div className="good-page__content  mt-30">
             <Container>
@@ -15,7 +12,6 @@ const GoodPageAll = ({selectGood}) => {
                         <div className="">
                             <img src={selectGood.img} alt={selectGood.model} />
                         </div>
-
                         <div className="mt-30">
                             <Typography
                                 variant="h5"
@@ -38,19 +34,17 @@ const GoodPageAll = ({selectGood}) => {
                                 {selectGood.video}/
                             </Typography>
                         </div>
-                        <div className="good-page__discription mt-50">
-                            <div className="goods-page__title">
+                        <div className="mt-50">
+                            <div className="">
                                 <Typography
                                     variant="h3"
-                                    component="span"
-                                >
+                                    component="span">
                                     Описание:
                                 </Typography>
                                 <Typography
                                     variant="h2"
                                     component="h2"
-                                    sx={{color: "#e3e3e3"}}
-                                >
+                                    sx={{color: "#e3e3e3"}}>
                                     {selectGood.model}
                                 </Typography>
                             </div>
@@ -65,7 +59,6 @@ const GoodPageAll = ({selectGood}) => {
                             </Typography>
                         </div>
                     </Grid>
-
                     <Grid item md={6}>
                         <div className="border  p-10">
                             <Typography
@@ -74,7 +67,6 @@ const GoodPageAll = ({selectGood}) => {
                                 {selectGood.cost}
                             </Typography>
                         </div>
-
                         <div className="border  p-10  mt-30">
                             <div className="flex align-center">
                                 <GppGoodIcon fontSize="large"/>
@@ -91,12 +83,10 @@ const GoodPageAll = ({selectGood}) => {
                                 </Typography>
                             </div>
                         </div>
-
                     </Grid>
                 </Grid>
             </Container>
         </div>
     )
-}
-
+})
 export default GoodPageAll;
