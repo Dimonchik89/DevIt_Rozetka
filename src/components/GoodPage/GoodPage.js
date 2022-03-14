@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Container } from "@mui/material";
+import { Container, Typography, Badge } from "@mui/material";
+import Rating from '@mui/material/Rating';
 import Spiner from "../Spiner/Spiner";
 import { NavLink } from "react-router-dom";
 import GoodPageAll from "./GoodPageAll";
-import GoodPageInfo from "./GoodPageInfo";
+import GoodPageCharacter from "./GoodPageCharacter";
+import GoodPageReview from "./GoodPageReview";
 import useHttp from "../../hook/useHttp";
+import { changeTitle } from "../../helper/helper";
 import { goodsFetching, goodsFetched, goodsFetchingError } from "../../store/action/goods";
 import "./goodPage.scss";
 import "../../style/helper.scss";
@@ -33,7 +36,13 @@ const GoodPage = () => {
     return (
         <div className="good-page">
             <Container>
-                <h1>{selectGood.model}</h1>
+                <Typography
+                    variant="h2"
+                    component="h2"
+                >
+                    {changeTitle(selectGood.model)}
+                </Typography>
+                <Rating value={selectGood.rating} readOnly sx={{marginTop: "2rem"}}/>
             </Container>
             <div className="good-page__link-list">
                 <Container>
@@ -43,19 +52,28 @@ const GoodPage = () => {
                             className="good-page__link"
                             style={({isActive}) => {
                                 isActive ? activeStyle : null
-                            }}>Все</NavLink>
+                            }}>Все о товаре</NavLink>
                         <NavLink
-                            to="info"
+                            to="characteristics"
                             className="good-page__link"
                             style={({isActive}) => {
                                 isActive ? activeStyle : null
-                            }}>инфо</NavLink>
+                            }}>Характеристики</NavLink>
+                        <Badge badgeContent={selectGood.review ? selectGood?.review.length : null} color="success">
+                            <NavLink
+                                to="review"
+                                className="good-page__link"
+                                style={({isActive}) => {
+                                    isActive ? activeStyle : null
+                                }}>Отзывы</NavLink>
+                        </Badge>
                     </div>
                 </Container>
             </div>
             <Routes>
                 <Route path="/" element={<GoodPageAll selectGood={selectGood}/>}/>
-                <Route path="info" element={<GoodPageInfo selectGood={selectGood}/>}/>
+                <Route path="characteristics" element={<GoodPageCharacter selectGood={selectGood}/>}/>
+                <Route path="review" element={<GoodPageReview selectGood={selectGood}/>}/>
             </Routes>
         </div>
     )

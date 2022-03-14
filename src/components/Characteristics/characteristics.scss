@@ -1,0 +1,21 @@
+.characteristics-page__all {
+    width: 65%;
+    overflow: hidden;
+
+    &:after {
+        content: "...........................................................................";
+        display: block;
+        white-space: normal;
+        overflow: hidden;
+    }
+
+    & span:first-of-type {
+        float: left;
+        margin-right: 1rem;
+    }
+
+    & span:last-of-type {
+        float: right;
+        margin-left: 1rem;
+    }
+}

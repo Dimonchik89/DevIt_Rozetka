@@ -2,16 +2,13 @@ import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addGoodToCart } from "../../store/action/cart";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../helper/helper";
-import {handleChangeBoolean} from "../../hook/useChange";
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
+import FavoriteIconButton from "../FavoriteIcon/FavoriteIcon";
 import "./good.scss";
 import "../../style/helper.scss";
 
@@ -19,17 +16,29 @@ const Good = memo((props) => {
     const {id, model, img, rating, cost} = props;
     const dispatch = useDispatch();
     const {cart} = useSelector(state => state.cart);
-    const favorit = handleChangeBoolean(false)
-    const favoritIcon = favorit.value ? <FavoriteIcon sx={{ color: "orange" }} /> : <FavoriteBorderIcon sx={{ color: "orange" }} />;
+    let arr = [...cart]
+    const sortGood = (good) => {
+        if(arr.length) {
+            let goodInc = false;
+            arr.forEach((item, i) => {
+                if(item.id === good.id) {
+                    goodInc = true
+                    arr.splice(i, 1, {...item, qty: item.qty + 1})
+                }
+            })
+            if(!goodInc) {
+                arr.push({...good, qty: 1})
+            }
+        } else {
+            arr.push({...good, qty: 1})
+        }
+        return arr;
+    }
     return (
         <div className="good flex d-column">
             <div className="flex space-between align-center">
                 <span className="good__stock">Акция</span>
-                <IconButton
-                    onClick={favorit.change}
-                >
-                    {favoritIcon}
-                </IconButton>
+                <FavoriteIconButton/>
             </div>
             <Link to={`/${id}`}>
                 <div className="good-content">
@@ -57,7 +66,7 @@ const Good = memo((props) => {
                         </Typography>
                     </CardContent>
                     <IconButton disableRipple onClick={() => {
-                        dispatch(addGoodToCart(addToCart(cart, props)))
+                        dispatch(addGoodToCart(sortGood(props)))
                     }}>
                         <ShoppingCartIcon color="success" fontSize="large"/>
                     </IconButton>

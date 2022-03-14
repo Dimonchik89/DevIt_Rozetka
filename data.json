@@ -13,6 +13,7 @@
             "img" : "https://mzimg.com/big/b1/gg14fjfucb1.jpg",
             "category": "notebook",
             "rating": 5,
+            "review": [],
             "cost": 28999
         },
         {
@@ -28,6 +29,7 @@
             "img" : "https://content2.rozetka.com.ua/goods/images/big_tile/238664318.jpg",
             "category": "notebook",
             "rating": 5,
+            "review": [],
             "cost": 29999
         },
         {
@@ -43,6 +45,7 @@
             "img" : "https://content1.rozetka.com.ua/goods/images/big_tile/231873807.jpg",
             "category": "notebook",
             "rating": 3,
+            "review": [],
             "cost": 18999
         },
         {
@@ -58,6 +61,7 @@
             "img" : "https://content.rozetka.com.ua/goods/images/original/178043725.jpg",
             "category": "notebook",
             "rating": 4,
+            "review": [],
             "cost": 19999
         },
         {
@@ -73,6 +77,7 @@
             "img" : "https://content2.rozetka.com.ua/goods/images/big/232111828.jpg",
             "category": "notebook",
             "rating": 3,
+            "review": [],
             "cost": 10999
         },
         {
@@ -88,6 +93,7 @@
             "img" : "https://content.rozetka.com.ua/goods/images/big/206724554.jpg",
             "category": "notebook",
             "rating": 3,
+            "review": [],
             "cost": 12999
         },
         {
@@ -103,6 +109,7 @@
             "img" : "https://content2.rozetka.com.ua/goods/images/big/229863463.jpg",
             "category": "notebook",
             "rating": 4,
+            "review": [],
             "cost": 23999
         },
         {
@@ -118,6 +125,7 @@
             "img" : "https://content1.rozetka.com.ua/goods/images/big/228991359.jpg",
             "category": "notebook",
             "rating": 4,
+            "review": [],
             "cost": 15499
         },
         {
@@ -133,6 +141,7 @@
             "img" : "https://content1.rozetka.com.ua/goods/images/big/178062379.jpg",
             "category": "notebook",
             "rating": 3,
+            "review": [],
             "cost": 20999
         },
         {
@@ -148,6 +157,7 @@
             "img" : "https://content2.rozetka.com.ua/goods/images/big/234941560.jpg",
             "category": "notebook",
             "rating": 4,
+            "review": [],
             "cost": 13999
         },
         {
@@ -163,6 +173,7 @@
             "img" : "https://content.rozetka.com.ua/goods/images/big/235521372.jpg",
             "category": "notebook",
             "rating": 5,
+            "review": [],
             "cost": 34999
         },
         {
@@ -178,6 +189,7 @@
             "img" : "https://content.rozetka.com.ua/goods/images/big/196872104.jpg",
             "category": "notebook",
             "rating": 5,
+            "review": [],
             "cost": 15999
         }
     ],

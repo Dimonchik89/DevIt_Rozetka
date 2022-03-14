@@ -21,6 +21,11 @@ const goodsReducer = (state = initialState, action) => {
                 ...state,
                 loading: "error"
             }
+        case "ADD_REVIEW" :
+            return {
+                ...state,
+                goods: [...state.goods.filter(item => item.id !== action.payload.id), action.payload]
+            }
         default: return state
     }
 }

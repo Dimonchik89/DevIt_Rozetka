@@ -1,3 +1,7 @@
+export const changeTitle = (text) => {
+    return text.toLowerCase().replace(/\_/g, " ").toUpperCase()
+}
+
 export const handleIncludes = (parentText, find) => {
     return parentText.model.toLowerCase().replace(/\_/g, " ").includes(find.toLowerCase())
 }

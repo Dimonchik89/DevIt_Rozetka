@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, memo} from "react";
 import { useSelector } from "react-redux";
 
-const FilterContainer = ({renderContent}) => {
+const FilterContainer = memo(({renderContent}) => {
     const [filters, setFilters] = useState([]);
     const {allFilter} = useSelector(state => state.filter);
     useEffect(() => {
@@ -13,5 +13,5 @@ const FilterContainer = ({renderContent}) => {
             {container}
         </>
     )
-}
+})
 export default FilterContainer;

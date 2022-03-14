@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
 import { showMenu } from "../../store/action/slideMenu";
+import { openCart } from "../../store/action/cart";
 import "./header.scss";
 import "../../style/helper.scss";
 
@@ -82,7 +83,8 @@ const Header = () => {
                         <div className="focus__btn">
                             <IconButton
                                 size="large"
-                                aria-label="cart">
+                                aria-label="cart"
+                                onClick={() => dispatch(openCart())}>
                                 <Badge
                                     badgeContent={cart.length}
                                     color="success"

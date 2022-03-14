@@ -4,11 +4,13 @@ import Header from "../Header/Header";
 import GoodsPage from "../GoodsPage/GoodsPage";
 import GoodPage from "../GoodPage/GoodPage";
 import SlideMenu from "../SlideMenu/SlideMenu";
+import Cart from "../Cart/Cart";
 
 const App = () => {
     return (
         <>
             <Header/>
+            <Cart/>
             <SlideMenu/>
             <Routes>
                 <Route path="/" element={<GoodsPage/>}/>
