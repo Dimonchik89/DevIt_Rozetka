@@ -26,6 +26,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@google-pay/button-react": "^3.0.0",
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
     "@reduxjs/toolkit": "^1.8.0",
@@ -37,6 +38,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.2",
+    "redux-form": "^8.3.8",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   }

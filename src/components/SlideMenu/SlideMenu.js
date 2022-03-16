@@ -1,5 +1,6 @@
 import React from "react";
 import Drawer from '@mui/material/Drawer';
+import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -15,6 +16,7 @@ import SlideMenuSocial from "./SlideMenuSocial";
 import SlideMenuList from "./SlideMenuList";
 import { useSelector, useDispatch } from "react-redux";
 import { hideMenu } from "../../store/action/slideMenu";
+import { openLogin, openRegister } from "../../store/action/autorize";
 import "./slideMenu.scss";
 import "../../style/helper.scss";
 
@@ -39,14 +41,30 @@ const SlideMenu = () => {
                                 <Typography
                                     variant="h6"
                                     component="span"
-                                    color="white">
+                                    color="white"
+                                    sx={{cursor: "pointer"}}
+                                    onClick={() => {
+                                        dispatch(hideMenu())
+                                        setTimeout(() => {
+                                            dispatch(openLogin())
+                                        }, 300)
+
+                                    }}>
                                     Вход
                                 </Typography>
                                 <div className="slide-border"></div>
                                 <Typography
                                     variant="h6"
                                     component="span"
-                                    color="white">
+                                    color="white"
+                                    sx={{cursor: "pointer"}}
+                                    onClick={() => {
+                                        dispatch(hideMenu())
+                                        setTimeout(() => {
+                                            dispatch(openRegister())
+                                        }, 300)
+
+                                    }}>
                                     Регистрация
                                 </Typography>
                             </Box>

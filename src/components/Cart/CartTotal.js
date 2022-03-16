@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
+import GooglePay from "../../Pay/Pay";
 
 const CartTotal = ({sum}) => {
     return (
@@ -14,14 +15,15 @@ const CartTotal = ({sum}) => {
                     {sum} ₴
                 </Typography>
             </Box>
-            <Button variant="contained" color="success">
+            <GooglePay cost={(sum/29)}/>
+            {/* <Button variant="contained" color="success">
                 <Typography
                     variant="h5"
                     component="span"
                 >
                     Оформить Заказ
                 </Typography>
-            </Button>
+            </Button> */}
         </div>
     </div>
     )

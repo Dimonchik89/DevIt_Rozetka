@@ -13,7 +13,7 @@ const GoodPageRight = memo(({selectGood}) => {
                 <Typography
                     variant="h4"
                     component="h5"
-                    sx={{wordWrap: "break-word"}}
+                    className="word-wrap"
                 >
                     {selectGood.model}
                 </Typography>

@@ -9,6 +9,14 @@ const useHttp = () => {
             throw new Error(e)
         }
     }
-    return { getGoods }
+    const putGood = async (url, body) => {
+        try {
+            const response = await axios.put(url, body);
+            return response.data;
+        } catch(e) {
+            throw new Error(e)
+        }
+    }
+    return { getGoods, putGood }
 }
 export default useHttp;

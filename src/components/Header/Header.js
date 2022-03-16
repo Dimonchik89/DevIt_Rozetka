@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
 import { showMenu } from "../../store/action/slideMenu";
 import { openCart } from "../../store/action/cart";
+import { openLogin } from "../../store/action/autorize";
 import "./header.scss";
 import "../../style/helper.scss";
 
@@ -76,8 +77,9 @@ const Header = () => {
                         <div className="focus__btn">
                             <IconButton
                                 size="large"
-                                aria-label="user">
-                                <PersonOutlineIcon  className="icon"/>
+                                aria-label="user"
+                                onClick={() => dispatch(openLogin())}>
+                                <PersonOutlineIcon className="icon"/>
                             </IconButton>
                         </div>
                         <div className="focus__btn">

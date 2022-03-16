@@ -1,0 +1,45 @@
+@import "../../style/vars.scss";
+.login-wrapper {
+    // width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate3d(-50%, -50%, 0);
+    background: #fff;
+    border-radius: 5px;
+}
+
+.login__input {
+    padding: .5rem 1rem;
+    width: 250px;
+    font-size: 1.4rem;
+    border: 1px solid $gray;
+    border-radius: 5px;
+
+    &::placeholder {
+        font-size: 1.2rem;
+    }
+
+    &.error {
+        border: 1px solid red;
+    }
+
+    &:focus {
+        border: 1px solid green;
+        outline: none;
+    }
+}
+
+.login__as {
+    position: relative;
+
+    .login__as-text {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate3d(-50%, -50%, 0);
+        background: #fff;
+        font-size: 1.2rem;
+    }
+}
