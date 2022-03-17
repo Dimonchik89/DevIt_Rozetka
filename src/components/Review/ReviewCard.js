@@ -1,5 +1,6 @@
 import React, {memo} from "react";
 import { Rating, Typography, Box } from "@mui/material";
+import ReviewItem from "./ReviewItem";
 
 const ReviewCard = memo(({review}) => {
     return (
@@ -20,45 +21,10 @@ const ReviewCard = memo(({review}) => {
                 </Typography>
             </Box>
             <Box className="p-16">
-                <Rating value={review?.raiting} readOnly/>
-                <Box className="mb-20">
-                    <Typography
-                        variant="h6"
-                        component="span"
-                    >
-                        {review?.comment}
-                    </Typography>
-                </Box>
-                <Box className="mb-20">
-                    <Typography
-                        variant="h6"
-                        component="h6"
-                        sx={{fontWeight: 600}}
-                    >
-                        Достоинства
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        component="span"
-                    >
-                        {review?.advantages}
-                    </Typography>
-                </Box>
-                <Box className="mb-20">
-                    <Typography
-                        variant="h6"
-                        component="h6"
-                        sx={{fontWeight: 600}}
-                    >
-                        Недостатки
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        component="span"
-                    >
-                        {review?.disadvantages}
-                    </Typography>
-                </Box>
+                <Rating value={review?.raiting}/>
+                <ReviewItem title="" text={review?.comment}/>
+                <ReviewItem title="Достоинства" text={review?.advantages}/>
+                <ReviewItem title="Недостатки" text={review?.disadvantages}/>
             </Box>
         </Box>
     )

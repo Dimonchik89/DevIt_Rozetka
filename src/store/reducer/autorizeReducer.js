@@ -1,33 +1,31 @@
+import { handleActions } from "redux-actions"
+export const OPEN_LOGIN = "OPEN_LOGIN";
+export const CLOSED_LOGIN = "CLOSED_LOGIN";
+export const OPEN_REGISTER = "OPEN_REGISTER";
+export const CLOSED_REGISTER = "CLOSED_REGISTER";
+
 const initialState = {
     showLogin: false,
     showRegister: false
 }
 
-const autorizeReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "OPEN_LOGIN":
-            return {
-                ...state,
-                showLogin: true
-            }
-        case "CLOSED_LOGIN":
-            return {
-                ...state,
-                showLogin: false
-            }
-        case "OPEN_REGISTER":
-            return {
-                ...state,
-                showLogin: false,
-                showRegister: true
-            }
-        case "CLOSED_REGISTER":
-            return {
-                ...state,
-                showRegister: false
-            }
-        default: return state
-    }
-}
-
+const autorizeReducer = handleActions({
+    OPEN_LOGIN: state => ({
+        ...state,
+        showLogin: true
+    }),
+    CLOSED_LOGIN: state => ({
+        ...state,
+        showLogin: false
+    }),
+    OPEN_REGISTER: state => ({
+        ...state,
+        showLogin: false,
+        showRegister: true
+    }),
+    CLOSED_REGISTER: state => ({
+        ...state,
+        showRegister: false
+    }),
+}, initialState);
 export default autorizeReducer;

@@ -7,6 +7,7 @@ import { closedRegiser } from "../../store/action/autorize";
 import AuthorizationHeader from "./AuthorizationHeader";
 import LoginAs from "../Authorization/LoginAs";
 import "./login.scss";
+
 const Register = () => {
     const dispatch = useDispatch();
     const { showRegister } = useSelector(state => state.autorizeReducer)

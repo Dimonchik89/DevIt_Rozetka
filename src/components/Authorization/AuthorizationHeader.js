@@ -20,5 +20,4 @@ const AuthorizationHeader = ({title, handleChange}) => {
         </Box>
     )
 }
-
 export default AuthorizationHeader

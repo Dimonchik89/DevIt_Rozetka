@@ -1,3 +1,16 @@
+@import "../../style/vars.scss";
+.cart-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    background: $white;
+    border: 2px solid green;
+    box-shadow: 24;
+    padding: 1.6rem;
+}
+
 .cart__img {
     width: 100px;
 }

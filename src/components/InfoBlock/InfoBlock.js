@@ -22,5 +22,4 @@ const InfoBlock = memo(({icon, title, text}) => {
         </div>
     )
 })
-
 export default InfoBlock;

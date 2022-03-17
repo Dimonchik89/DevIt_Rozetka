@@ -15,5 +15,4 @@ const FavoriteIconButton = () => {
         </IconButton>
     )
 }
-
 export default FavoriteIconButton;

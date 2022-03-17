@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { closedLogin, openRegister } from "../../store/action/autorize";
 import { useDispatch } from "react-redux";
 import { Button, Typography, Box } from "@mui/material";
-import { InputForm } from "../FormsControl/FormsControl";
+import { InputBlock } from "../FormsControl/FormsControl";
 import { required, emailValidate, minLengthCreator } from "../../validates/validates";
 import "../../style/helper.scss";
 import "../Authorization/login.scss";
@@ -18,36 +18,18 @@ let FormLogin = (props) => {
             <form onSubmit={handleSubmit}
                 className="p-16">
                     <div className="mb-20">
-                        <Typography
-                            variant="body1"
-                            component="p"
-                            color="gray"
-                        >
-                            Эл. почта или телефон
-                        </Typography>
-                        <Field
-                            className="login__input"
+                        <InputBlock title="Эл. почта или телефон"
                             placeholder="email"
                             name="email"
                             type="email"
-                            validate={[required, emailValidate]}
-                            component={InputForm}/>
+                            validate={[required, emailValidate]}/>
                     </div>
                     <div className="mb-20">
-                        <Typography
-                            variant="body1"
-                            component="p"
-                            color="gray"
-                        >
-                            Пароль
-                        </Typography>
-                        <Field
-                            className="login__input"
+                        <InputBlock title="Пароль"
                             name="password"
                             type="password"
                             placeholder="Пароль"
-                            validate={[required, nimLength6]}
-                            component={InputForm}/>
+                            validate={[required, nimLength6]}/>
                     </div>
                     <div className="mb-20">
                         <Field name="remeberMe" type="checkbox" component="input"/>

@@ -30,5 +30,4 @@ const Description = memo(({selectGood}) => {
         </div>
     )
 })
-
 export default Description;

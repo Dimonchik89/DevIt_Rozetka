@@ -9,7 +9,6 @@ import "./infoList.scss";
 import "../../style/helper.scss";
 
 const InfoList = memo(({arrLink, borderStyle}) => {
-    console.log("info list")
     const listContent = arrLink?.map(item => {
         return (
             <Link key={nanoid()}  to={item.link} className="info-list__link">

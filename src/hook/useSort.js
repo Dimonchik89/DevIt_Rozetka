@@ -24,6 +24,7 @@ const useSort = () => {
             return setSortGoodsArr(newArr)
         }
     }
+    
     const {cart} = useSelector(state => state.cart);
     let arr = [...cart]
     const sortGood = (good) => {

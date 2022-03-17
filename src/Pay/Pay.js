@@ -1,9 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import GooglePayButton from "@google-pay/button-react"
 
-const GooglePay = ({cost}) => {
+const GooglePay = memo(({cost}) => {
     const sum = cost.toFixed(2)
-    // console.log(sum)
     return (
         <div>
         <GooglePayButton
@@ -45,5 +44,5 @@ const GooglePay = ({cost}) => {
             />
         </div>
     )
-}
+})
 export default GooglePay

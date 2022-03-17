@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Button, Typography, Box } from "@mui/material";
 import { closedRegiser, openLogin } from "../../store/action/autorize";
 import { useDispatch } from "react-redux";
-import { InputForm } from "../FormsControl/FormsControl";
+import { InputForm, InputBlock } from "../FormsControl/FormsControl";
 import { required, emailValidate, phoneValidate, minLengthCreator } from "../../validates/validates";
 import "../../style/helper.scss";
 import "../Authorization/login.scss";
@@ -20,84 +20,39 @@ let FormRegister = (props) => {
                 className="p-16"
             >
                 <div className="mb-20">
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        color="gray"
-                    >
-                        Имя
-                    </Typography>
-                    <Field
-                        className="login__input"
+                    <InputBlock title="Имя"
                         type="text"
                         name="name"
                         placeholder="Имя"
-                        validate={[required]}
-                        component={InputForm}/>
+                        validate={[required]}/>
                 </div>
                 <div className="mb-20">
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        color="gray"
-                    >
-                        Фамилия
-                    </Typography>
-                <Field
-                    className="login__input"
-                    type="text"
-                    name="surname"
-                    placeholder="Фамилия"
-                    validate={[required]}
-                    component={InputForm}/>
+                    <InputBlock title="Фамилия"
+                        type="text"
+                        name="surname"
+                        placeholder="Фамилия"
+                        validate={[required]}/>
                 </div>
                 <div className="mb-20">
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        color="gray"
-                    >
-                        Телефон
-                    </Typography>
-                    <Field
-                        className="login__input"
-                        type="phone"
+                    <InputBlock title="Телефон"
+                        type="tel"
                         name="phone"
                         placeholder="Телефон"
-                        validate={[required, phoneValidate]}
-                        component={InputForm}/>
+                        validate={[required, phoneValidate]}/>
                 </div>
                 <div className="mb-20">
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        color="gray"
-                    >
-                        Эл. почта
-                    </Typography>
-                    <Field
-                    className="login__input"
-                    type="email"
-                    name="email"
-                    placeholder="e-mail"
-                    validate={[required, emailValidate]}
-                    component={InputForm}/>
+                    <InputBlock title="Эл. почта"
+                        type="email"
+                        name="email"
+                        placeholder="e-mail"
+                        validate={[required, emailValidate]}/>
                 </div>
                 <div className="mb-20">
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        color="gray"
-                    >
-                        Пароль
-                    </Typography>
-                    <Field
-                    className="login__input"
-                    type="password"
-                    name="password"
-                    placeholder="Пароль"
-                    validate={[required, minLength6]}
-                    component={InputForm}/>
+                    <InputBlock title="Пароль"
+                        type="password"
+                        name="password"
+                        placeholder="Пароль"
+                        validate={[required, minLength6]}/>
                 </div>
                 <Button color="success" variant="contained" type="submit">
                     <Typography

@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import { changeTitle } from "../../helper/helper";
 
 const GoodPageTitle = memo(({title, model}) => {
-
     return (
         <>
             <Typography
@@ -22,5 +21,4 @@ const GoodPageTitle = memo(({title, model}) => {
         </>
     )
 })
-
 export default GoodPageTitle;

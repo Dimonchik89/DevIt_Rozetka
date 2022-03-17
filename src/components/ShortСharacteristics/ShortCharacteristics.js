@@ -30,5 +30,4 @@ const ShortCharacteristics = memo(({selectGood}) => {
         </>
     )
 })
-
 export default ShortCharacteristics;

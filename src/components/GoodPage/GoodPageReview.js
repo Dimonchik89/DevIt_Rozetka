@@ -24,5 +24,4 @@ const GoodPageReview = memo(({selectGood}) => {
         </Container>
     )
 })
-
 export default GoodPageReview;

@@ -19,23 +19,6 @@ const Good = memo((props) => {
     const {cart} = useSelector(state => state.cart);
     let arr = [...cart]
     const { sortGood } = useSort();
-    // const sortGood = (good) => {
-    //     if(arr.length) {
-    //         let goodInc = false;
-    //         arr.forEach((item, i) => {
-    //             if(item.id === good.id) {
-    //                 goodInc = true
-    //                 arr.splice(i, 1, {...item, qty: item.qty + 1})
-    //             }
-    //         })
-    //         if(!goodInc) {
-    //             arr.push({...good, qty: 1})
-    //         }
-    //     } else {
-    //         arr.push({...good, qty: 1})
-    //     }
-    //     return arr;
-    // }
     return (
         <div className="good flex d-column">
             <div className="flex space-between align-center">

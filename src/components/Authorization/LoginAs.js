@@ -1,6 +1,7 @@
-import { Box } from "@mui/system";
-import { Button, Typography } from "@mui/material";
 import React from "react";
+import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
+import LoginAsButton from "./LoginAsButton";
 import "../../style/helper.scss";
 import "./login.scss";
 
@@ -18,26 +19,10 @@ const LoginAs = () => {
             </Box>
             <Box>
                 <Box className="mb-20">
-                    <Button className="p-10" sx={{background: "#f5f5f5", width: "150px"}}>
-                        <Typography
-                            variant="h6"
-                            component="span"
-                            color="blue"
-                        >
-                            Facebook
-                        </Typography>
-                    </Button>
+                    <LoginAsButton title="Facebook"/>
                 </Box>
                 <Box className="mb-20">
-                    <Button className="p-10" sx={{background: "#f5f5f5", width: "150px"}}>
-                        <Typography
-                            variant="h6"
-                            component="span"
-                            color="blue"
-                        >
-                            Google
-                        </Typography>
-                    </Button>
+                    <LoginAsButton title="Google"/>
                 </Box>
             </Box>
             <span className="login__as-text">или</span>

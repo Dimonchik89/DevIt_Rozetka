@@ -1,45 +1,40 @@
+import { handleActions } from "redux-actions";
+export const ADD_GOOD_TO_CART = "ADD_GOOD_TO_CART";
+export const REMOVE_GOOD_FROM_CART = "REMOVE_GOOD_FROM_CART";
+export const OPEN_CART = "OPEN_CART";
+export const HIDE_CART = "HIDE_CART";
+export const INC_QTY = "INC_QTY";
+export const DEC_QTY = "DEC_QTY";
+
 const initialState = {
     cart: [],
     showCart: false
 }
 
-const cartReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "ADD_GOOD_TO_CART" :
-            return {
-                ...state,
-                // cart: [...state.cart, action.payload]
-                cart: action.payload
-            }
-        case "REMOVE_GOOD_FROM_CART":
-            return {
-                ...state,
-                cart: state.cart.filter(item => item.id !== action.payload)
-            }
-        case "OPEN_CART":
-            return {
-                ...state,
-                showCart: true
-            }
-        case "HIDE_CART":
-            return {
-                ...state,
-                showCart: false
-            }
-        case "INC_QTY": {
-            return {
-                ...state,
-                cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty + 1} : item)
-            }
-        }
-        case "DEC_QTY": {
-            return {
-                ...state,
-                cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty - 1} : item)
-            }
-        }
-        default: return state;
-    }
-}
-
-export {cartReducer};
+const cartReducer = handleActions({
+    ADD_GOOD_TO_CART: (state, action) => ({
+        ...state,
+        cart: action.payload
+    }),
+    REMOVE_GOOD_FROM_CART: (state, action) => ({
+        ...state,
+        cart: state.cart.filter(item => item.id !== action.payload)
+    }),
+    OPEN_CART: state => ({
+        ...state,
+        showCart: true
+    }),
+    HIDE_CART: state => ({
+        ...state,
+        showCart: false
+    }),
+    INC_QTY: (state, action) => ({
+        ...state,
+        cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty + 1} : item)
+    }),
+    DEC_QTY: (state, action) => ({
+        ...state,
+        cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty - 1} : item)
+    })
+}, initialState)
+export {cartReducer}

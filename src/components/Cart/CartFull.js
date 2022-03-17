@@ -17,5 +17,4 @@ const CartFull = memo(({cart}) => {
         </>
     )
 })
-
 export default CartFull;

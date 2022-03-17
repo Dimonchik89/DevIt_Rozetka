@@ -1,6 +1,4 @@
-export const addReview = (good) => {
-    return {
-        type: "ADD_REVIEW",
-        payload: good
-    }
-}
+import { createAction } from "@reduxjs/toolkit";
+import { ADD_REVIEW } from "../reducer/goodsReduer";
+
+export const addReview = createAction(ADD_REVIEW);

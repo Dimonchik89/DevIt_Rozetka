@@ -30,5 +30,4 @@ const Login = () => {
         </Modal>
     )
 }
-
 export default Login;

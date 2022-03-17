@@ -5,7 +5,6 @@ import "./characteristics.scss";
 import "../../style/helper.scss"
 
 const CharacteristicsPageAll = memo(({selectGood}) => {
-
     return (
         <div className="mt-50">
             <Typography

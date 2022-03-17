@@ -36,5 +36,4 @@ const GoodPageRight = memo(({selectGood}) => {
         </>
     )
 })
-
 export default GoodPageRight;

@@ -16,17 +16,8 @@ const CartTotal = ({sum}) => {
                 </Typography>
             </Box>
             <GooglePay cost={(sum/29)}/>
-            {/* <Button variant="contained" color="success">
-                <Typography
-                    variant="h5"
-                    component="span"
-                >
-                    Оформить Заказ
-                </Typography>
-            </Button> */}
         </div>
     </div>
     )
 }
-
 export default CartTotal;

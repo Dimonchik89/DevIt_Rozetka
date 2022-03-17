@@ -1,6 +1,5 @@
 @import "../../style/vars.scss";
 .login-wrapper {
-    // width: 400px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -16,6 +15,11 @@
     font-size: 1.4rem;
     border: 1px solid $gray;
     border-radius: 5px;
+
+    &:hover {
+        outline: none;
+        box-shadow: none;
+    }
 
     &::placeholder {
         font-size: 1.2rem;

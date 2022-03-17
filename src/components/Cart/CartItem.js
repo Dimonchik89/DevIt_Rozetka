@@ -1,10 +1,12 @@
 import React, {memo} from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import CartItemButton from "./CartItemButton"
 import { removeGoodFromCart } from "../../store/action/cart";
 import { useDispatch } from "react-redux";
 import { incQty, decQty } from "../../store/action/cart";
 import "../../style/helper.scss";
 import "./cart.scss";
+
 const CartItem = memo(({good}) => {
     const dispatch = useDispatch();
     if(!good.qty) {
@@ -21,11 +23,7 @@ const CartItem = memo(({good}) => {
                 >
                     {good.model}
                 </Typography>
-                <Button
-                    onClick={() => dispatch(decQty(good.id))}
-                >
-                    -
-                </Button>
+                <CartItemButton symbol="-" handleChange={decQty} id={good.id}/>
                 <Typography
                     variant="h5"
                     component="span"
@@ -33,11 +31,7 @@ const CartItem = memo(({good}) => {
                 >
                     {good.qty}
                 </Typography>
-                <Button
-                    onClick={() => dispatch(incQty(good.id))}
-                >
-                    +
-                </Button>
+                <CartItemButton symbol="+" handleChange={incQty} id={good.id}/>
                 <Typography
                     variant="h5"
                     component="span"
@@ -45,14 +39,9 @@ const CartItem = memo(({good}) => {
                 >
                     {good.cost} ₴
                 </Typography>
-                <Button
-                    onClick={() => dispatch(removeGoodFromCart(good.id))}
-                >
-                    x
-                </Button>
+                <CartItemButton symbol="x" handleChange={removeGoodFromCart} id={good.id}/>
             </Box>
         </Box>
     )
 })
-
 export default CartItem;

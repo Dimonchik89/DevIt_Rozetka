@@ -1,23 +1,7 @@
-export const openLogin = () => {
-    return {
-        type: "OPEN_LOGIN"
-    }
-}
+import { createAction } from "@reduxjs/toolkit";
+import { OPEN_LOGIN, CLOSED_LOGIN, OPEN_REGISTER, CLOSED_REGISTER} from "../reducer/autorizeReducer";
 
-export const closedLogin = () => {
-    return {
-        type: "CLOSED_LOGIN"
-    }
-}
-
-export const openRegister = () => {
-    return {
-        type: "OPEN_REGISTER"
-    }
-}
-
-export const closedRegiser = () => {
-    return {
-        type: "CLOSED_REGISTER"
-    }
-}
+export const openLogin = createAction(OPEN_LOGIN)
+export const closedLogin = createAction(CLOSED_LOGIN)
+export const openRegister = createAction(OPEN_REGISTER)
+export const closedRegiser = createAction(CLOSED_REGISTER)

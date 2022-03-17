@@ -21,9 +21,7 @@ const ButtonAddToCart = memo(({selectGood, styleClass}) => {
                 >
                     Купить
                 </Typography>
-
         </Button>
     )
 })
-
 export default ButtonAddToCart;

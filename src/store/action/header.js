@@ -1,12 +1,5 @@
-export const changeFind = (find) => {
-    return {
-        type: "CHANGE_FIND",
-        payload: find
-    }
-}
+import { createAction } from "@reduxjs/toolkit";
+import { CHANGE_FIND, RESET_FIND } from "../reducer/headerReducer";
 
-export const resetFind = () => {
-    return {
-        type: "RESET_FIND"
-    }
-}
+export const changeFind = createAction(CHANGE_FIND);
+export const resetFind = createAction(RESET_FIND);

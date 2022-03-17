@@ -2,7 +2,6 @@ import React from "react";
 import { Typography } from "@mui/material";
 
 const Saler = () => {
-
     return (
         <div className="border p-16 mt-30">
             <div className="flex  space-between">
@@ -25,5 +24,4 @@ const Saler = () => {
         </div>
     )
 }
-
 export default Saler;

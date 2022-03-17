@@ -4,7 +4,6 @@ import "./characteristics.scss";
 import "../../style/helper.scss"
 
 const CharacteristicItem = memo(({title, info}) => {
-
     return (
         <div className="characteristics-page__all  mt-15">
             <Typography

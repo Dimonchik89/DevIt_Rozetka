@@ -39,11 +39,7 @@ const Header = () => {
                     </Grid>
                     <Grid item md={3} className="flex align-center">
                         <Link to="/">
-                            <pictures>
-                                <source media="(min-width: 1280px)" srcSet="https://content2.rozetka.com.ua/widget_logotype/full/original/229862237.svg"/>
-                                <source media="(min-width: 240px)" srcSet="https://content.rozetka.com.ua/widget_logotype/light/original/229862238.svg"/>
-                                <img src="https://content2.rozetka.com.ua/widget_logotype/full/original/229862237.svg" alt="logo" />
-                            </pictures>
+                            <img src="https://content2.rozetka.com.ua/widget_logotype/full/original/229862237.svg" alt="logo" />
                         </Link>
                     </Grid>
                     <Grid item md={6} className="flex align-center">
