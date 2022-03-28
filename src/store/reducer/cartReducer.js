@@ -1,40 +1,59 @@
 import { handleActions } from "redux-actions";
-export const ADD_GOOD_TO_CART = "ADD_GOOD_TO_CART";
-export const REMOVE_GOOD_FROM_CART = "REMOVE_GOOD_FROM_CART";
-export const OPEN_CART = "OPEN_CART";
-export const HIDE_CART = "HIDE_CART";
-export const INC_QTY = "INC_QTY";
-export const DEC_QTY = "DEC_QTY";
+import { addGoodToCart, removeGoodFromCart, openCart, hideCart, incQty, decQty } from "../action/cart";
 
 const initialState = {
     cart: [],
     showCart: false
 }
 
-const cartReducer = handleActions({
-    ADD_GOOD_TO_CART: (state, action) => ({
+const addGoodToCartHandler = (state, action) => {
+    return {
         ...state,
         cart: action.payload
-    }),
-    REMOVE_GOOD_FROM_CART: (state, action) => ({
+    }
+}
+
+const removeGoodFromCartHandler = (state, action) => {
+    return {
         ...state,
         cart: state.cart.filter(item => item.id !== action.payload)
-    }),
-    OPEN_CART: state => ({
+    }
+}
+
+const openCartHandler = (state) => {
+    return {
         ...state,
         showCart: true
-    }),
-    HIDE_CART: state => ({
+    }
+}
+
+const hideCartHandler = (state) => {
+    return {
         ...state,
         showCart: false
-    }),
-    INC_QTY: (state, action) => ({
+    }
+}
+
+const incQtyHandler = (state, action) => {
+    return {
         ...state,
         cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty + 1} : item)
-    }),
-    DEC_QTY: (state, action) => ({
+    }
+}
+
+const decQtyHandler = (state, action) => {
+    return {
         ...state,
         cart: state.cart.map(item => item.id === action.payload ? {...item, qty: item.qty - 1} : item)
-    })
+    }
+}
+
+const cartReducer = handleActions({
+    [addGoodToCart]: addGoodToCartHandler,
+    [removeGoodFromCart]: removeGoodFromCartHandler,
+    [openCart]: openCartHandler,
+    [hideCart]: hideCartHandler,
+    [incQty]: incQtyHandler,
+    [decQty]: decQtyHandler
 }, initialState)
 export {cartReducer}

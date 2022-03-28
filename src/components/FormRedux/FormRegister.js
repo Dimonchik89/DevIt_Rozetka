@@ -1,80 +1,50 @@
-import React from "react";
-import { Field, reduxForm } from 'redux-form'
-import { Button, Typography, Box } from "@mui/material";
+import React, {memo} from "react";
+import { reduxForm } from 'redux-form'
+import { Box } from "@mui/material";
 import { closedRegiser, openLogin } from "../../store/action/autorize";
-import { useDispatch } from "react-redux";
-import { InputForm, InputBlock } from "../FormsControl/FormsControl";
+import { InputBlock } from "../FormsControl/FormsControl";
 import { required, emailValidate, phoneValidate, minLengthCreator } from "../../validates/validates";
+import FormButton from "./FormButton";
+import ChangeFormButton from "./ChangeFormButton";
 import "../../style/helper.scss";
 import "../Authorization/login.scss";
 
+
 const minLength6 = minLengthCreator(6);
 
-let FormRegister = (props) => {
+const registerForm = [
+    {title: "Имя", placeholder: "Имя", name: "name", type: "text",  validate: [required]},
+    {title: "Фамилия", placeholder: "Фамилия", name: "surname", type: "text",  validate: [required]},
+    {title: "Телефон", placeholder: "Телефон", name: "phone", type: "tel",  validate: [required, phoneValidate]},
+    {title: "Эл. почта", placeholder: "email", name: "email", type: "email",  validate: [required, emailValidate]},
+    {title: "Пароль", placeholder: "Пароль", name: "password", type: "password",  validate: [required, minLength6]},
+]
+
+let FormRegister = memo((props) => {
     const {handleSubmit} = props;
-    const dispatch = useDispatch();
+    const inputForm = registerForm.map(({title, type, name, placeholder, validate}) => (
+            <div className="mb-20">
+                <InputBlock title={title}
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    validate={validate}/>
+            </div>
+    ))
     return (
         <Box>
             <form
                 onSubmit={handleSubmit}
                 className="p-16"
             >
-                <div className="mb-20">
-                    <InputBlock title="Имя"
-                        type="text"
-                        name="name"
-                        placeholder="Имя"
-                        validate={[required]}/>
-                </div>
-                <div className="mb-20">
-                    <InputBlock title="Фамилия"
-                        type="text"
-                        name="surname"
-                        placeholder="Фамилия"
-                        validate={[required]}/>
-                </div>
-                <div className="mb-20">
-                    <InputBlock title="Телефон"
-                        type="tel"
-                        name="phone"
-                        placeholder="Телефон"
-                        validate={[required, phoneValidate]}/>
-                </div>
-                <div className="mb-20">
-                    <InputBlock title="Эл. почта"
-                        type="email"
-                        name="email"
-                        placeholder="e-mail"
-                        validate={[required, emailValidate]}/>
-                </div>
-                <div className="mb-20">
-                    <InputBlock title="Пароль"
-                        type="password"
-                        name="password"
-                        placeholder="Пароль"
-                        validate={[required, minLength6]}/>
-                </div>
-                <Button color="success" variant="contained" type="submit">
-                    <Typography
-                        variant="h5"
-                        component="span"
-                    >
-                        Регистрация
-                    </Typography>
-                </Button>
+                {inputForm}
+                <FormButton title="Зарегестрировать"/>
             </form>
-            <Box sx={{textAlign: "center"}}>
-                <Button onClick={() => {
-                    dispatch(closedRegiser())
-                    dispatch(openLogin())
-                }}>
-                    Я уже зарегестрирован
-                </Button>
-            </Box>
+            <ChangeFormButton title="Я уже зарегестрирован" closed={closedRegiser} open={openLogin}/>
         </Box>
 
     )
-}
+})
 
 FormRegister = reduxForm({
     form: "register"

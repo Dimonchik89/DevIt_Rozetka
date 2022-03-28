@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Typography, Badge } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Rating from '@mui/material/Rating';
 import Spiner from "../Spiner/Spiner";
-import { NavLink } from "react-router-dom";
 import GoodPageAll from "./GoodPageAll";
 import GoodPageCharacter from "./GoodPageCharacter";
 import GoodPageReview from "./GoodPageReview";
 import useHttp from "../../hook/useHttp";
 import { changeTitle } from "../../helper/helper";
 import { goodsFetching, goodsFetched, goodsFetchingError } from "../../store/action/goods";
+import GoodPageLinks from "./GoodPageLinks";
 import "./goodPage.scss";
 import "../../style/helper.scss";
 
@@ -24,10 +24,7 @@ const GoodPage = () => {
             .then(goods => dispatch(goodsFetched(goods)))
             .catch(dispatch(goodsFetchingError()))
     }, [])
-    const activeStyle = {
-        color: "green",
-        textDecoration: "underline"
-    }
+
     const {goods} = useSelector(state =>  state.allGoods);
     const selectGood = goods?.find(item => item.id === +id)
     if(!selectGood) {
@@ -46,28 +43,7 @@ const GoodPage = () => {
             </Container>
             <div className="good-page__link-list">
                 <Container>
-                    <div className="flex">
-                        <NavLink
-                            to=""
-                            className="good-page__link"
-                            style={({isActive}) => {
-                                isActive ? activeStyle : null
-                            }}>Все о товаре</NavLink>
-                        <NavLink
-                            to="characteristics"
-                            className="good-page__link"
-                            style={({isActive}) => {
-                                isActive ? activeStyle : null
-                            }}>Характеристики</NavLink>
-                        <Badge badgeContent={selectGood.review ? selectGood?.review.length : null} color="success">
-                            <NavLink
-                                to="review"
-                                className="good-page__link"
-                                style={({isActive}) => {
-                                    isActive ? activeStyle : null
-                                }}>Отзывы</NavLink>
-                        </Badge>
-                    </div>
+                    <GoodPageLinks selectGood={selectGood}/>
                 </Container>
             </div>
             <Routes>

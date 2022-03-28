@@ -1,7 +1,7 @@
-import React from "react";
+import React, {memo} from "react";
 import { Button, Typography } from "@mui/material";
 
-const LoginAsButton = ({title}) => {
+const LoginAsButton = memo(({title}) => {
     return (
         <Button className="p-10" sx={{background: "#f5f5f5", width: "150px"}}>
             <Typography
@@ -13,5 +13,5 @@ const LoginAsButton = ({title}) => {
             </Typography>
         </Button>
     )
-}
+})
 export default LoginAsButton;

@@ -1,7 +1,8 @@
 import React, {memo} from "react";
 import { useDispatch } from "react-redux";
 import { addReview } from "../../store/action/review";
-import { Container, Grid, Typography } from "@mui/material";
+import useHttp from "../../hook/useHttp";
+import { Container, Grid } from "@mui/material";
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import Description from "../Description/Description";
 import ShortCharacteristics from "../ShortСharacteristics/ShortCharacteristics";
@@ -11,24 +12,26 @@ import FormReview from "../Form/FormReview";
 import FavoriteIconButton from "../FavoriteIcon/FavoriteIcon";
 import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart";
 import Saler from "../Saler/Saler";
+import TextBlock from "../TextBlock/TextBlock";
 import "./goodPage.scss"
 import "../../style/helper.scss";
 import "../../style/vars.scss";
 
-
 const GoodPageAll = memo(({selectGood}) => {
     const dispatch = useDispatch();
+    const { putGood } = useHttp();
     const onSubmit = (formData) => {
         const newGood = selectGood;
         newGood.review.push(formData)
         dispatch(addReview(newGood))
+        putGood(`http://localhost:3001/category/${selectGood.id}`, {...selectGood, review: newGood.review})
     }
     return (
         <div className="mt-30">
             <Container>
                 <Grid container spacing={4}>
                     <Grid item md={6}>
-                        <div className="">
+                        <div>
                             <img src={selectGood.img} alt={selectGood.model} />
                         </div>
                             <ShortCharacteristics selectGood={selectGood}/>
@@ -39,19 +42,7 @@ const GoodPageAll = memo(({selectGood}) => {
                         <div className="border  p-16">
                             <div className="flex">
                                 <div className="mr-15">
-                                    <Typography
-                                        variant="h3"
-                                        component="span"
-                                        sx={{color: "red"}}>
-                                        {selectGood.cost}
-                                    </Typography>
-                                    <Typography
-                                        variant="h5"
-                                        component="span"
-                                        sx={{color: "red"}}
-                                    >
-                                        ₴
-                                    </Typography>
+                                    <TextBlock title={selectGood.cost} text="₴" titleClass="inline color-red" textClass="color-red" titleVariant="h3" textVariant="h5"/>
                                 </div>
                                 <div className="mr-15">
                                     <ButtonAddToCart selectGood={selectGood} styleClass=""/>

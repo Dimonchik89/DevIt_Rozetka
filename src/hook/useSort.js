@@ -15,7 +15,7 @@ const useSort = () => {
             let newArr = [];
             for(let i = 0; i < where.length; i++) {
                 for(let q = 0; q < what.length; q++) {
-                    if(Object.values(where[i]).includes(what[q])) {
+                    if(Object.values(where[i]).includes(what[q].replace(/\-/g, " "))) {
                         newArr.push(where[i])
                         break
                     }
@@ -24,7 +24,7 @@ const useSort = () => {
             return setSortGoodsArr(newArr)
         }
     }
-    
+
     const {cart} = useSelector(state => state.cart);
     let arr = [...cart]
     const sortGood = (good) => {

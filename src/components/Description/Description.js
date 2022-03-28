@@ -1,22 +1,15 @@
 import React, {memo} from "react";
 import { Typography } from "@mui/material";
+import TextBlock from "../TextBlock/TextBlock";
+import { changeTitle } from "../../helper/helper";
+import "../Characteristics/characteristics.scss";
 import "../../style/helper.scss"
 
 const Description = memo(({selectGood}) => {
     return (
         <div className="mt-50">
-            <div className="">
-                <Typography
-                    variant="h3"
-                    component="span">
-                    Описание:
-                </Typography>
-                <Typography
-                    variant="h2"
-                    component="h2"
-                    sx={{color: "#e3e3e3", wordWrap: "break-word"}}>
-                    {selectGood.model}
-                </Typography>
+            <div>
+                <TextBlock title="Описание:" text={changeTitle(selectGood.model)} titleClass="inline" textClass="characteristic__title ml-05" titleVariant="h3" textVariant="h2"/>
             </div>
             <Typography
                 variant="h6"

@@ -1,5 +1,7 @@
-import { createAction } from "@reduxjs/toolkit";
-import { CHANGE_FIND, RESET_FIND } from "../reducer/headerReducer";
+import { createAction } from "redux-actions";
+
+export const CHANGE_FIND = "CHANGE_FIND";
+export const RESET_FIND = "RESET_FIND";
 
 export const changeFind = createAction(CHANGE_FIND);
 export const resetFind = createAction(RESET_FIND);

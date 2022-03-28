@@ -9,6 +9,10 @@
     }
 }
 
+.inline {
+    display: inline;
+}
+
 .decoration-none {
     text-decoration: none;
 }
@@ -70,6 +74,10 @@
     padding-bottom: 3rem;
 }
 
+.ml-05 {
+    margin-left: .5rem !important;
+}
+
 .mt-15{
     margin-top: 1.5rem;
 }
@@ -101,6 +109,10 @@
 
 .width-100 {
     width: 100%;
+}
+
+.color-red {
+    color: red;
 }
 
 .word-wrap {

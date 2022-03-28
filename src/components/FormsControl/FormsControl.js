@@ -1,12 +1,12 @@
-import React from "react"
+import React, {memo} from "react"
 import { Field } from 'redux-form';
 import { Typography } from "@mui/material";
 import "../../style/error.scss";
 import "../Authorization/login.scss";
 
-export const InputForm = (props) => {
+export const InputForm = memo((props) => {
     const {input, meta, className, type, placeholder} = props;
-    const inputClass = meta.touched && meta.error ? `${className} error` : className
+    const inputClass = meta.touched && meta.error ? `${className} error` : className;
     return (
         <div className="error-block">
             <input className={inputClass} {...input} placeholder={placeholder} type={type} />
@@ -14,7 +14,7 @@ export const InputForm = (props) => {
             {meta.touched && meta.error ? <span className="error__icon">!</span> : null}
         </div>
     )
-}
+})
 
 export const InputBlock = ({title, ...tailProps}) => {
     return (

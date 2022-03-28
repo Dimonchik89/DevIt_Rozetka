@@ -10,21 +10,24 @@ import "./filter.scss";
 
 const Filter = () => {
     const dispatch = useDispatch();
-    const {getGoods} = useHttp()
+    const {getGoods} = useHttp();
+    const filterQuery = [];
     useEffect(() => {
         dispatch(filterFetching())
         getGoods("http://localhost:3001/notebook-filter")
             .then(filters => dispatch(filterFetched(filters)))
             .catch(dispatch(filterFetchingError()))
-
+            console.log(filterQuery);
     }, [])
     const renderContent = useCallback((data) => {
         if(data.length > 0) {
             return data.map(item => {
+                const queryKey = Object.keys(item)[0];
+                filterQuery.push({...Object.keys(item)})
                 return (
                     <FormGroup className="filter__block">
                         <h3 className="filter__title">{Object.keys(item)}</h3>
-                        {Object.values(item)[0].map(elem => <FilterItem item={elem} addActiveFilter={addActiveFilter} removeOneFilter={removeOneFilter}/>)}
+                        {Object.values(item)[0].map(elem => <FilterItem item={elem} addActiveFilter={addActiveFilter} removeOneFilter={removeOneFilter}  queryKey={queryKey}/>)}
                     </FormGroup>
                 )
             })

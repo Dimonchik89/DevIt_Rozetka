@@ -1,18 +1,26 @@
 import { handleActions } from "redux-actions";
-export const CHANGE_FIND = "CHANGE_FIND";
-export const RESET_FIND = "RESET_FIND";
+import { changeFind, resetFind } from "../action/header";
+
 const initialState = {
     find: ""
 }
 
-const headerReducer = handleActions({
-    CHANGE_FIND: (state, action) => ({
+const changeFindHandler = (state, action) => {
+    return {
         ...state,
         find: action.payload
-    }),
-    RESET_FIND: state => ({
+    }
+}
+
+const resetFindHandler = (state) => {
+    return {
         ...state,
         find: ""
-    }),
+    }
+}
+
+const headerReducer = handleActions({
+    [changeFind]: changeFindHandler,
+    [resetFind]: resetFindHandler
 }, initialState);
 export {headerReducer}

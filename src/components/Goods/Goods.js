@@ -16,6 +16,7 @@ const Goods = () => {
     const {find} = useSelector(state => state.find);
     const { activeFilter } = useSelector(state => state.filter);
     const {getGoods} = useHttp();
+
     useEffect(() => {
         dispatch(goodsFetching())
         getGoods("http://localhost:3001/category")
@@ -26,6 +27,7 @@ const Goods = () => {
         await sortName(find, allGoods)
         await contains(allGoods, activeFilter)
     }, [allGoods, find, activeFilter]);
+    
     if(loading === "loading") {
         return <Spiner/>
     }

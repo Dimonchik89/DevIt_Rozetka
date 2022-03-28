@@ -1,6 +1,6 @@
 .characteristics-page__all {
-    width: 65%;
     overflow: hidden;
+    width: 65%;
 
     &:after {
         content: "...........................................................................";
@@ -9,7 +9,7 @@
         overflow: hidden;
     }
 
-    & span:first-of-type {
+    & h6:first-of-type {
         float: left;
         margin-right: 1rem;
     }
@@ -17,5 +17,11 @@
     & span:last-of-type {
         float: right;
         margin-left: 1rem;
+        color: blue;
     }
+}
+
+.characteristic__title {
+    color: #e3e3e3;
+    word-wrap: break-word;
 }

@@ -1,19 +1,27 @@
 import { handleActions } from "redux-actions";
-export const SHOW_MENU = "SHOW_MENU";
-export const HIDE_MENU = "HIDE_MENU";
+import { showMenu, hideMenu } from "../action/slideMenu";
+
 const initialState = {
     showSlide: false
 }
 
-const slideMenuReducer = handleActions({
-    SHOW_MENU: state => ({
+const showMenuHandler = (state) => {
+    return {
         ...state,
         showSlide: true
-    }),
-    HIDE_MENU: state => ({
+    }
+}
+
+const hideMenuHandler = (state) => {
+    return {
         ...state,
         showSlide: false
-    }),
+    }
+}
+
+const slideMenuReducer = handleActions({
+    [showMenu]: showMenuHandler,
+    [hideMenu]: hideMenuHandler
 }, initialState)
 
 export {slideMenuReducer}

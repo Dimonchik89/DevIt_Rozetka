@@ -1,30 +1,45 @@
 import { handleActions } from "redux-actions";
-export const GOODS_FETCHING = "GOODS_FETCHING";
-export const GOODS_FETCHED = "GOODS_FETCHED";
-export const GOODS_FETCHING_ERROR = "GOODS_FETCHING_ERROR";
-export const ADD_REVIEW = "ADD_REVIEW";
+import { goodsFetching, goodsFetched, goodsFetchingError } from "../action/goods";
+import { addReview } from "../action/review";
+
 const initialState = {
     goods: [],
     loading: "idle"
 }
 
-const goodsReducer = handleActions({
-    GOODS_FETCHING: state => ({
+const goodsFetchingHandler = (state) => {
+    return {
         ...state,
         loading: "loading"
-    }),
-    GOODS_FETCHED: (state, action) => ({
+    }
+}
+
+const goodsFetchedHandler = (state, action) => {
+    return {
         ...state,
         goods: action.payload,
         loading: "idle"
-    }),
-    GOODS_FETCHING_ERROR: state => ({
+    }
+}
+
+const goodsFetchingErrorHandler = (state) => {
+    return {
         ...state,
         loading: "error"
-    }),
-    ADD_REVIEW: (state, action) => ({
+    }
+}
+
+const addReviewHandler = (state, action) => {
+    return {
         ...state,
         goods: [...state.goods.filter(item => item.id !== action.payload.id), action.payload]
-    }),
+    }
+}
+
+const goodsReducer = handleActions({
+    [goodsFetching]: goodsFetchingHandler,
+    [goodsFetched]: goodsFetchedHandler,
+    [goodsFetchingError]: goodsFetchingErrorHandler,
+    [addReview]: addReviewHandler
 }, initialState);
 export {goodsReducer}

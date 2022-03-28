@@ -1,25 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useFind} from "../../hook/useFind";
 import { Link } from "react-router-dom";
-import { changeFind, resetFind } from "../../store/action/header";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import CloseIcon from '@mui/icons-material/Close';
-import Button from '@mui/material/Button';
-import Badge from '@mui/material/Badge';
 import { showMenu } from "../../store/action/slideMenu";
-import { openCart } from "../../store/action/cart";
-import { openLogin } from "../../store/action/autorize";
+import HeaderFind from "./HeaderFind";
+import HeaderIconBlock from "./HeaderIconBlock";
 import "./header.scss";
 import "../../style/helper.scss";
 
 const Header = () => {
-    const inputText = useFind("");
     const dispatch = useDispatch();
     const {cart} = useSelector(state => state.cart);
     return (
@@ -32,7 +24,9 @@ const Header = () => {
                             <IconButton
                                 size="large"
                                 aria-label="user"
-                                onClick={() => dispatch(showMenu())}>
+                                onClick={() => {
+                                    dispatch(showMenu())
+                                }}>
                                 <MenuIcon className="icon"/>
                             </IconButton>
                         </div>
@@ -43,55 +37,10 @@ const Header = () => {
                         </Link>
                     </Grid>
                     <Grid item md={6} className="flex align-center">
-                        <div className="header__find">
-                            <input
-                                className="header__input"
-                                type="text"
-                                value={inputText.findText}
-                                onChange={inputText.setChangeFindText}
-                                />
-                                {
-                                    inputText.findText.length === 0 ? null : <IconButton disableRipple="false" sx={{mr: "1rem"}} onClick={() => {
-                                                                            inputText.resetFindText()
-                                                                            dispatch(resetFind())
-                                                                        }}>
-                                                                        <CloseIcon/>
-                                                                    </IconButton>
-                                }
-                            <Button
-                                className="header__button"
-                                color="success"
-                                variant="contained"
-                                onClick={() => {
-                                    dispatch(changeFind(inputText.findText))
-                                }}>
-                                Найти
-                            </Button>
-                        </div>
+                        <HeaderFind/>
                     </Grid>
                     <Grid item md={2} className="flex justify-end">
-                        <div className="focus__btn">
-                            <IconButton
-                                size="large"
-                                aria-label="user"
-                                onClick={() => dispatch(openLogin())}>
-                                <PersonOutlineIcon className="icon"/>
-                            </IconButton>
-                        </div>
-                        <div className="focus__btn">
-                            <IconButton
-                                size="large"
-                                aria-label="cart"
-                                onClick={() => dispatch(openCart())}>
-                                <Badge
-                                    badgeContent={cart.length}
-                                    color="success"
-                                    size="large"
-                                    fontSize="1rem">
-                                    <ShoppingCartIcon  className="icon"/>
-                                </Badge>
-                            </IconButton>
-                        </div>
+                        <HeaderIconBlock cart={cart}/>
                     </Grid>
                 </Grid>
             </Container>

@@ -1,5 +1,11 @@
-import { createAction } from "@reduxjs/toolkit";
-import { ADD_GOOD_TO_CART, REMOVE_GOOD_FROM_CART, INC_QTY, DEC_QTY, OPEN_CART, HIDE_CART } from "../reducer/cartReducer";
+import { createAction } from "redux-actions";
+
+export const ADD_GOOD_TO_CART = "ADD_GOOD_TO_CART";
+export const REMOVE_GOOD_FROM_CART = "REMOVE_GOOD_FROM_CART";
+export const OPEN_CART = "OPEN_CART";
+export const HIDE_CART = "HIDE_CART";
+export const INC_QTY = "INC_QTY";
+export const DEC_QTY = "DEC_QTY";
 
 export const addGoodToCart = createAction(ADD_GOOD_TO_CART)
 export const removeGoodFromCart = createAction(REMOVE_GOOD_FROM_CART)

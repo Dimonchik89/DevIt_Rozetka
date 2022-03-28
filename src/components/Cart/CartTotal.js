@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Typography, Button } from "@mui/material";
 import GooglePay from "../../Pay/Pay";
 
-const CartTotal = ({sum}) => {
+const CartTotal = memo(({sum}) => {
     return (
         <div className="cart__total">
         <div className="cart__pay">
@@ -19,5 +19,5 @@ const CartTotal = ({sum}) => {
         </div>
     </div>
     )
-}
+})
 export default CartTotal;

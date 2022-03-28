@@ -1,42 +1,61 @@
 import { handleActions } from "redux-actions"
-export const ADD_ACTIVE_FILTER = "ADD_ACTIVE_FILTER"
-export const REMOVE_ONE_FILTER = "REMOVE_ONE_FILTER"
-export const RESET_FILTER = "RESET_FILTER"
-export const FILTER_FETCHING = "FILTER_FETCHING"
-export const FILTER_FETCHED = "FILTER_FETCHED"
-export const FILTER_FETCHING_ERROR = "FILTER_FETCHING_ERROR"
+import { addActiveFilter, removeOneFilter, resetFilter, filterFetching, filterFetched, filterFetchingError } from "../action/filter";
+
 const initialState = {
     allFilter: [],
     activeFilter: [],
     loading: "idle"
 }
 
-const filterReducer = handleActions({
-    ADD_ACTIVE_FILTER: (state, action) => ({
+const addActiveFilterHandler = (state, action) => {
+    return {
         ...state,
-        activeFilter: [...state.activeFilter, action.payload]
-    }),
-    REMOVE_ONE_FILTER: (state, action) => ({
+        activeFilter: action.payload
+    }
+}
+
+const removeOneFilterHandler = (state, action) => {
+    return {
         ...state,
         activeFilter: state.activeFilter.filter(item => item !== action.payload)
-    }),
-    RESET_FILTER: state => ({
+    }
+}
+
+const resetFilterHandler = (state) => {
+    return {
         ...state,
         activeFilter: []
-    }),
-    FILTER_FETCHING: state => ({
+    }
+}
+
+const filterFetchingHandler = (state) => {
+    return {
         ...state,
         loading: "loading"
-    }),
-    FILTER_FETCHED: (state, action) => ({
+    }
+}
+
+const filterFetchedHandler = (state, action) => {
+    return {
         ...state,
         loading: "idle",
         allFilter: action.payload
-    }),
-    FILTER_FETCHING_ERROR: state => ({
+    }
+}
+
+const filterFetchingErrorHandler = (state) => {
+    return {
         ...state,
         loading: "error"
-    })
+    }
+}
 
+const filterReducer = handleActions({
+    [addActiveFilter]: addActiveFilterHandler,
+    [removeOneFilter]: removeOneFilterHandler,
+    [resetFilter]: resetFilterHandler,
+    [filterFetching]: filterFetchingHandler,
+    [filterFetched]: filterFetchedHandler,
+    [filterFetchingError]: filterFetchingErrorHandler
 }, initialState);
 export {filterReducer}

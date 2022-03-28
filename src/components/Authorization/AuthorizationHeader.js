@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 
-const AuthorizationHeader = ({title, handleChange}) => {
+const AuthorizationHeader = memo(({title, handleChange}) => {
     const dispatch = useDispatch()
     return (
         <Box className="flex space-between border-bottom p-16">
@@ -19,5 +19,5 @@ const AuthorizationHeader = ({title, handleChange}) => {
             </Button>
         </Box>
     )
-}
+})
 export default AuthorizationHeader

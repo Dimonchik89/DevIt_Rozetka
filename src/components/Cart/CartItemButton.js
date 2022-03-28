@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 
-const CartItemButton = ({symbol, handleChange, id}) => {
+const CartItemButton = memo(({symbol, handleChange, id}) => {
     const dispatch = useDispatch();
     return (
         <Button
@@ -11,5 +11,5 @@ const CartItemButton = ({symbol, handleChange, id}) => {
             {symbol}
         </Button>
     )
-}
+})
 export default CartItemButton;

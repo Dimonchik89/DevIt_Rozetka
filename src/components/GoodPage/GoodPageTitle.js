@@ -1,23 +1,12 @@
 import React, {memo} from "react";
-import { Typography } from "@mui/material";
 import { changeTitle } from "../../helper/helper";
+import TextBlock from "../TextBlock/TextBlock";
+import "../../style/helper.scss";
 
 const GoodPageTitle = memo(({title, model}) => {
     return (
         <>
-            <Typography
-                variant="h3"
-                component="span"
-            >
-                {title}
-            </Typography>
-            <Typography
-                variant="h3"
-                component="span"
-                sx={{color: "gray", marginLeft: "1.5rem"}}
-            >
-                {changeTitle(model)}
-            </Typography>
+            <TextBlock title={title} text={changeTitle(model)} titleClass="inline" textClass="ml-05" titleVariant="h3" textVariant="h3"/>
         </>
     )
 })
